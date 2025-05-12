@@ -1,4 +1,4 @@
-// Chat Widget Script
+// Startup Miracle Branded n8n Chat Widget
 (function() {
     // Create and inject styles
     const styles = `
@@ -130,30 +130,6 @@
             color: var(--chat--color-font);
             opacity: 0.7;
             margin: 0;
-        }
-
-        .n8n-chat-widget .ice-breakers {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 16px;
-        }
-
-        .n8n-chat-widget .ice-btn {
-            background: #f3f4f6;
-            border: 1px solid #d1d5db;
-            color: #1f2937;
-            font-size: 14px;
-            padding: 10px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-            font-family: inherit;
-        }
-
-        .n8n-chat-widget .ice-btn:hover {
-            background: #e5e7eb;
-            transform: scale(1.02);
         }
 
         .n8n-chat-widget .chat-interface {
@@ -295,6 +271,28 @@
         .n8n-chat-widget .chat-footer a:hover {
             opacity: 1;
         }
+
+        @media (max-width: 480px) {
+            .n8n-chat-widget .chat-container {
+                width: 95vw;
+                height: 90vh;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .n8n-chat-widget .chat-toggle {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .n8n-chat-widget .new-conversation {
+                max-width: 90%;
+            }
+
+            .n8n-chat-widget .chat-input textarea {
+                font-size: 16px;
+            }
+        }
     `;
 
     // Load Geist font
@@ -360,7 +358,6 @@
     const chatContainer = document.createElement('div');
     chatContainer.className = `chat-container${config.style.position === 'left' ? ' position-left' : ''}`;
     
-
     const newConversationHTML = `
         <div class="brand-header">
             <img src="${config.branding.logo}" alt="${config.branding.name}">
@@ -369,11 +366,6 @@
         </div>
         <div class="new-conversation">
             <h2 class="welcome-text">${config.branding.welcomeText}</h2>
-            <div class="ice-breakers">
-                <button class="ice-btn" data-msg="Get a Free Estimate">Get a Free Estimate</button>
-                <button class="ice-btn" data-msg="View Offers">View Offers</button>
-                <button class="ice-btn" data-msg="Get Support">Get Support</button>
-            </div>
             <button class="new-chat-btn">
                 <svg class="message-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/>
@@ -530,17 +522,4 @@
             chatContainer.classList.remove('open');
         });
     });
-
-    // Enable ice-breaker button interaction
-    const iceBreakerButtons = chatContainer.querySelectorAll('.ice-btn');
-    iceBreakerButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const message = button.getAttribute('data-msg');
-            if (message) {
-                textarea.value = message;
-                sendButton.click(); // triggers sendMessage()
-            }
-        });
-    });
-
 })();
