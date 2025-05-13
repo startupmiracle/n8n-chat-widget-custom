@@ -531,10 +531,10 @@
             transform: none;
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 400px) {
             .chat-assist-widget .chat-window {
                 width: 100%;
-                height: 80%;
+                height: 60%;
                 bottom: 10px;
                 right: 0;
                 left: 0;
