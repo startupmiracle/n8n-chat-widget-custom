@@ -530,6 +530,24 @@
             cursor: not-allowed;
             transform: none;
         }
+
+        @media screen and (max-width: 600px) {
+            .chat-assist-widget .chat-window {
+                width: 100%;
+                height: 80%;
+                bottom: 10px;
+                right: 0;
+                left: 0;
+                transform: translateY(0) scale(1);
+            }
+
+            .chat-assist-widget .chat-launcher {
+                width: 50px;
+                height: 50px;
+                bottom: 10px;
+                right: 10px;
+            }
+        }
     `;
     document.head.appendChild(widgetStyles);
 
