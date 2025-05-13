@@ -532,9 +532,9 @@
         }
 
         @media screen and (max-width: 480px) {
-            .n8n-chat-assist-widget .chat-container {
+            .n8n-chat-assist-widget .chat-window {
                 width: 95vw;
-                height: 85vw;
+                height: 85vh;
                 bottom: 10px;
                 right: 2.5vw;
                 left: 2.5vw;
